@@ -4,7 +4,7 @@ object MyCurry {
   }
 
   def uncurry[A, B, C](f: A => B => C): (A, B) => C = {
-    (a: A, b: B) => f(a)(b)    
+    (a: A, b: B) => f(a)(b)
   }
 
   def compose[A, B, C](f: B => C, g: A => B): A => C = {
@@ -25,7 +25,7 @@ object MyCurry {
 
    println(y("test"))
    println(y("asdf"))
- 
+
    val z = partialX(-1)
    println(z("test"))
    println(z("asdf"))

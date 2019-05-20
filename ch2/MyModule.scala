@@ -17,6 +17,9 @@ object MyModule {
     msg.format(x, abs(x))
   }
 
+  // Sample curring formatResult, returns new
+  // function with give name and abs function
+  // set in formatResult
   private def curryFormatAbs(name: String) = {
     (n: Int) => formatResult(name, n, abs)
   }
@@ -26,6 +29,8 @@ object MyModule {
     msg.format(n, factorial(n))
   }
 
+  // Higher Order function that takes name, value and function
+  // to run on value
   def formatResult(name: String, n: Int, f: Int => Int) = {
     val msg = "The %s of %d is %d"
     msg.format(name, n, f(n))
@@ -34,7 +39,8 @@ object MyModule {
   def main(args: Array[String]): Unit = {
     println(formatResult("absolute value", -42, abs))
     println(formatResult("factorial", 7, factorial))
-    println(curryFormatAbs("Abs Result!")(-33))
+    val curriedFormatAbs = curryFormatAbs("ABS VAL")
+    println(curriedFormatAbs(-33))
   }
 }
 
